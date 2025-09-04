@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Developer Portfolio</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin: auto;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+    nav ul li a:hover { color: #00bcd4; }
+    .section { padding: 60px 20px; text-align: center; }
+    .home {
+      background: linear-gradient(to right, #00bcd4, #2196f3);
+      color: #fff;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #008c9e; }
+
+    /* Skills */
+    .skills-container { width: 60%; margin: auto; }
+    .skill { margin: 10px 0; text-align: left; }
+    .bar {
+      display: block;
+      height: 10px;
+      background: #ddd;
+      margin-top: 5px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .bar span { height: 10px; display: block; }
+    .html { width: 90%; background: #e34c26; }
+    .css { width: 80%; background: #264de4; }
+    .js { width: 70%; background: #f0db4f; }
+    .java { width: 60%; background: #b07219; }
+
+    /* Projects */
+    .projects-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .project-card a { color: #00bcd4; text-decoration: none; }
+
+    /* Contact */
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: auto;
+    }
+    .contact input, .contact textarea {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <h1 class="logo">My Portfolio</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="section home">
+    <h2>Hello, I'm <span class="highlight">Your Name</span></h2>
+    <p class="typing"></p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I am a B.Sc. IT student passionate about coding, web development, and software engineering.
+       This portfolio highlights my skills, projects, and achievements.</p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <div class="skill">HTML <span class="bar"><span class="html"></span></span></div>
+      <div class="skill">CSS <span class="bar"><span class="css"></span></span></div>
+      <div class="skill">JavaScript <span class="bar"><span class="js"></span></span></div>
+      <div class="skill">Java <span class="bar"><span class="java"></span></span></div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Calculator</h3>
+        <p>A simple calculator built using HTML, CSS, and JS.</p>
+        <a href="#">GitHub Link</a>
+      </div>
+      <div class="project-card">
+        <h3>Weather App</h3>
+        <p>Fetches real-time weather using API.</p>
+        <a href="#">GitHub Link</a>
+      </div>
+      <div class="project-card">
+        <h3>To-Do List</h3>
+        <p>A task manager with local storage support.</p>
+        <a href="#">GitHub Link</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 My Portfolio | Designed with HTML, CSS, JS</p>
+  </footer>
+
+  <script>
+    // Typing animation effect
+    const roles = ["Web Developer", "Java Programmer", "B.Sc IT Student"];
+    let index = 0, charIndex = 0;
+    const typingElement = document.querySelector(".typing");
+
+    function typeEffect() {
+      if (charIndex < roles[index].length) {
+        typingElement.textContent += roles[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+      } else {
+        setTimeout(eraseEffect, 2000);
+      }
+    }
+    function eraseEffect() {
+      if (charIndex > 0) {
+        typingElement.textContent = roles[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50);
+      } else {
+        index = (index + 1) % roles.length;
+        setTimeout(typeEffect, 500);
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => { typeEffect(); });
+
+    // Contact form validation
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you for contacting me! (Demo only, no backend linked)");
+    });
+  </script>
+</body>
+</html>
